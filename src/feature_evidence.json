@@ -1,0 +1,177 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-hero-section-with-a-strong-headline-promoting-nexthire-ai-as-an-ai-powered-resume-builder-a-compelling-subheadline-and-a-primary-call-to-action-button",
+      "featureTitle": "Create a hero section with a strong headline promoting NextHire AI as an AI-powered resume builder, a compelling subheadline, and a primary call-to-action button",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/HeroSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-features-section-showcasing-three-key-capabilities-ai-resume-builder-ats-checker-and-job-tracker-each-with-an-icon-title-and-description",
+      "featureTitle": "Create a features section showcasing three key capabilities: AI resume builder, ATS checker, and job tracker, each with an icon, title, and description",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/FeaturesSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-how-it-works-section-explaining-the-user-journey-in-3-4-steps-with-visual-hierarchy",
+      "featureTitle": "Create a 'How it works' section explaining the user journey in 3-4 steps with visual hierarchy",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/HowItWorksSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-pricing-section-with-at-least-three-pricing-tiers-e-g-free-pro-enterprise-including-features-list-and-cta-buttons-for-each-tier",
+      "featureTitle": "Create a pricing section with at least three pricing tiers (e.g., Free, Pro, Enterprise) including features list and CTA buttons for each tier",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/PricingSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-testimonials-section-with-at-least-three-customer-testimonials-each-including-a-quote-customer-name-and-role-company",
+      "featureTitle": "Create a testimonials section with at least three customer testimonials, each including a quote, customer name, and role/company",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/TestimonialsSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-faq-section-with-at-least-5-6-common-questions-and-answers-in-an-expandable-collapsible-format",
+      "featureTitle": "Create an FAQ section with at least 5-6 common questions and answers in an expandable/collapsible format",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/FAQSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-call-to-action-section-with-email-signup-form-that-captures-user-email-addresses-and-includes-a-submit-button",
+      "featureTitle": "Create a call-to-action section with email signup form that captures user email addresses and includes a submit button",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/EmailSignupSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-blue-and-white-color-theme-throughout-the-landing-page-with-clean-minimal-and-professional-styling-that-reflects-a-modern-startup-aesthetic",
+      "featureTitle": "Apply a blue and white color theme throughout the landing page with clean, minimal, and professional styling that reflects a modern startup aesthetic",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-render-generated-images-as-static-assets-in-frontend-public-assets-generated-for-any-visual-elements-created-for-the-landing-page",
+      "featureTitle": "Render generated images as static assets in frontend/public/assets/generated for any visual elements created for the landing page",
+      "files": [
+        "frontend/src/components/FeaturesSection.tsx",
+        "frontend/src/components/HeroSection.tsx",
+        "frontend/src/components/TestimonialsSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
