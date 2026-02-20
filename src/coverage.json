@@ -1,49 +1,40 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-20T11:20:54.955Z",
+  "generatedAt": "2026-02-20T11:27:40.521Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
+    "total": 1,
     "implemented": 1,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Fix the duplicate email detection logic in the createLead function to properly check if an email already exists in the Leads collection before inserting a new record. The current implementation incorrectly returns 'This email is already registered' for every submission.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Verify the form submission flow correctly handles both duplicate and unique email submissions, displaying appropriate success or error messages to the user.",
+        "summary": "Create a new page or section that displays all records from the Leads collection in a user-friendly table format showing full name, email, country, target job role, and submission timestamp",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/components/EarlyAccessForm.tsx"
+          "frontend/src/pages/LeadsPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Header.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/components/EarlyAccessForm.tsx"
+          "frontend/src/pages/LeadsPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Header.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/EarlyAccessForm.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/App.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/pages/LeadsPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

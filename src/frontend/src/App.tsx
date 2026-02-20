@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import LandingPage from './pages/LandingPage';
 import AdminPage from './pages/AdminPage';
 import DebugLeadsPage from './pages/DebugLeadsPage';
+import LeadsPage from './pages/LeadsPage';
 
 // Create root route with layout
 const rootRoute = createRootRoute({
@@ -39,8 +40,15 @@ const debugLeadsRoute = createRoute({
   component: DebugLeadsPage,
 });
 
+// Create leads route
+const leadsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/leads',
+  component: LeadsPage,
+});
+
 // Create router with route tree
-const routeTree = rootRoute.addChildren([indexRoute, adminRoute, debugLeadsRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, adminRoute, debugLeadsRoute, leadsRoute]);
 const router = createRouter({ routeTree });
 
 // Register router for type safety

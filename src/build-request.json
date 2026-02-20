@@ -1,57 +1,41 @@
 {
   "kind": "build_request",
-  "title": "Fix email validation duplicate detection logic",
-  "priority": "high",
+  "title": "Display all Lead records from backend collection",
+  "projectName": "NextHire AI",
+  "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Fix the duplicate email detection logic in the createLead function to properly check if an email already exists in the Leads collection before inserting a new record. The current implementation incorrectly returns 'This email is already registered' for every submission.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Currently it incorrectly shows \"This email is already registered\" for every submission"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Before inserting a new Lead record, query the Leads Map to check if any existing record has the same email",
-        "Only return the error 'This email is already registered' if a matching email is actually found in the collection",
-        "If no existing email is found, successfully insert the new Lead record and return success",
-        "Email comparison must be case-insensitive (convert both emails to lowercase before comparison)",
-        "The database query correctly iterates through the Leads Map values to check for email matches"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Verify the form submission flow correctly handles both duplicate and unique email submissions, displaying appropriate success or error messages to the user.",
+      "text": "Create a new page or section that displays all records from the Leads collection in a user-friendly table format showing full name, email, country, target job role, and submission timestamp",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "After fixing, test the submission flow"
+          "Show me all records currently stored in the Leads collection."
         ]
       },
       "acceptanceCriteria": [
-        "When submitting a form with a new email, the success message is displayed and the form resets",
-        "When submitting a form with an existing email (case-insensitive match), the error message 'This email is already registered' is displayed",
-        "Error states are properly cleared when the user modifies the form and resubmits"
+        "All lead records are fetched from the backend using the existing getAllLeads query",
+        "Records are displayed in a table with columns for all Lead fields (full name, email, country, target job role, timestamp)",
+        "Timestamps are formatted in a human-readable format",
+        "Loading and error states are handled appropriately",
+        "Empty state is shown when no records exist"
       ]
     }
   ],
   "constraints": [
-    "Maintain the existing Lead type structure and Map-based storage implementation",
-    "Do not modify the frontend form UI components beyond error handling logic",
-    "Preserve the existing useCreateLead mutation hook structure"
+    "Use the existing useAllLeads hook from frontend/src/hooks/useQueries.ts",
+    "Follow the existing AdminPage.tsx pattern for displaying leads",
+    "Do not modify backend/main.mo as getAllLeads functionality already exists"
   ],
   "nonGoals": [
-    "Adding email format validation beyond duplicate checking",
-    "Implementing email verification or confirmation flows",
-    "Changing the database storage mechanism from Map to a different structure",
-    "Adding bulk email import or management features"
+    "Adding filtering or search capabilities",
+    "Adding pagination",
+    "Adding export functionality",
+    "Modifying the Lead data structure",
+    "Adding authentication requirements for viewing leads"
   ],
   "imageRequirements": {
     "required": [],

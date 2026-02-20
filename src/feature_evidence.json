@@ -2,11 +2,12 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-verify-the-form-submission-flow-correctly-handles-both-duplicate-and-unique-email-submissions-displaying-appropriate-success-or-error-messages-to-the-user",
-      "featureTitle": "Verify the form submission flow correctly handles both duplicate and unique email submissions, displaying appropriate success or error messages to the user.",
+      "featureId": "feature-create-a-new-page-or-section-that-displays-all-records-from-the-leads-collection-in-a-user-friendly-table-format-showing-full-name-email-country-target-job-role-and-submission-timestamp",
+      "featureTitle": "Create a new page or section that displays all records from the Leads collection in a user-friendly table format showing full name, email, country, target job role, and submission timestamp",
       "files": [
-        "frontend/src/components/EarlyAccessForm.tsx",
-        "frontend/src/hooks/useQueries.ts"
+        "frontend/src/App.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/pages/LeadsPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,7 +17,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-1"
       ],
       "confidence": "high"
     }

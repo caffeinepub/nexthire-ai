@@ -30,6 +30,11 @@ export default function Header() {
     navigate({ to: '/' });
   };
 
+  const handleLeadsClick = () => {
+    navigate({ to: '/leads' });
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,6 +70,12 @@ export default function Header() {
               className="text-foreground/80 hover:text-foreground transition-colors"
             >
               FAQ
+            </button>
+            <button
+              onClick={handleLeadsClick}
+              className="text-foreground/80 hover:text-foreground transition-colors"
+            >
+              Leads
             </button>
             <button
               onClick={() => scrollToSection('signup')}
@@ -111,6 +122,12 @@ export default function Header() {
               className="block w-full text-left text-foreground/80 hover:text-foreground transition-colors py-2"
             >
               FAQ
+            </button>
+            <button
+              onClick={handleLeadsClick}
+              className="block w-full text-left text-foreground/80 hover:text-foreground transition-colors py-2"
+            >
+              Leads
             </button>
             <button
               onClick={() => scrollToSection('signup')}

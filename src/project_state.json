@@ -3,31 +3,20 @@
   "projectStateVersion": 3,
   "summary": "New project",
   "architectural_notes": [],
-  "known_issues": [
-    "Email validation incorrectly shows 'This email is already registered' for every submission"
-  ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-verify-the-form-submission-flow-correctly-handles-both-duplicate-and-unique-email-submissions-displaying-appropriate-success-or-error-messages-to-the-user",
-      "title": "Verify the form submission flow correctly handles both duplicate and unique email submissions, displaying appropriate success or error messages to the user.",
+      "id": "feature-create-a-new-page-or-section-that-displays-all-records-from-the-leads-collection-in-a-user-friendly-table-format-showing-full-name-email-country-target-job-role-and-submission-timestamp",
+      "title": "Create a new page or section that displays all records from the Leads collection in a user-friendly table format showing full name, email, country, target job role, and submission timestamp",
       "reqIds": [
-        "REQ-2"
+        "REQ-1"
       ],
       "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Fix the duplicate email detection logic in the createLead function to properly check if an email already exists in the Leads collection before inserting a new record. The current implementation incorrectly returns 'This email is already registered' for every submission.",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "status": "pending"
-    }
-  ],
-  "projectName": "Fix email validation duplicate detection logic",
+  "new_feature_requests": [],
+  "projectName": "NextHire AI",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

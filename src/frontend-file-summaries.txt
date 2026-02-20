@@ -1,6 +1,6 @@
 {
-  "frontend/src/App.tsx": "Main application component using TanStack Router with root layout including Header and Footer, defining routes for landing page (/), admin page (/admin), and debug leads page (/debug-leads).",
-  "frontend/src/components/Header.tsx": "Fixed navigation header with logo, menu items, smooth scroll navigation, and TanStack Router integration for navigation between pages with responsive mobile menu.",
+  "frontend/src/App.tsx": "Main application component using TanStack Router with root layout including Header and Footer, defining routes for landing page (/), admin page (/admin), debug leads page (/debug-leads), and leads page (/leads).",
+  "frontend/src/components/Header.tsx": "Fixed navigation header with logo, menu items including new Leads link, smooth scroll navigation, and TanStack Router integration for navigation between pages with responsive mobile menu.",
   "frontend/src/components/HeroSection.tsx": "Hero section with headline, subheadline, two CTA buttons (updated to scroll to the new early access form), and laptop mockup image displayed in a two-column layout.",
   "frontend/src/components/FeaturesSection.tsx": "Features section displaying three key features (AI Resume Builder, ATS Checker, Job Tracker) with icons, titles, and descriptions in a responsive grid layout.",
   "frontend/src/components/HowItWorksSection.tsx": "How It Works section showing exactly three steps in a horizontal layout with numbered circles, icons, and step descriptions.",
@@ -20,5 +20,6 @@
   "frontend/src/pages/AdminPage.tsx": "Admin dashboard page component that displays all lead submissions from the Leads collection in a table with columns for Full Name, Email, Country, Target Job Role, and formatted Submission Date (converted from nanosecond timestamp), including loading and error states.",
   "frontend/src/pages/LandingPage.tsx": "Landing page component that renders all marketing sections in a main element with full width and natural vertical flow.",
   "frontend/index.html": "HTML entry point with proper DOCTYPE, viewport meta tag configured for mobile responsiveness with maximum-scale=5.0 to allow zoom.",
-  "frontend/src/pages/DebugLeadsPage.tsx": "Debug page component that fetches and displays all lead records from the backend in a simple HTML table with columns for full name, email, country, target job role, and formatted creation date, including loading and error states."
+  "frontend/src/pages/DebugLeadsPage.tsx": "Debug page component that fetches and displays all lead records from the backend in a simple HTML table with columns for full name, email, country, target job role, and formatted creation date, including loading and error states.",
+  "frontend/src/pages/LeadsPage.tsx": "New page component that displays all lead records from the backend in a table format with columns for full name, email, country, target job role, and formatted timestamp, including loading, error, and empty states."
 }

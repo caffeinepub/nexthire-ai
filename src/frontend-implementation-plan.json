@@ -1,26 +1,33 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix email validation duplicate detection logic - Frontend",
+  "title": "Display all Lead records from backend collection",
   "requirements": [
     {
-      "id": "REQ-2",
-      "summary": "Verify the form submission flow correctly handles both duplicate and unique email submissions, displaying appropriate success or error messages to the user",
+      "id": "REQ-1",
+      "summary": "Create a page displaying all Lead records in a user-friendly table format",
       "acceptanceCriteria": [
-        "When submitting a form with a new email, the success message is displayed and the form resets",
-        "When submitting a form with an existing email (case-insensitive match), the error message 'This email is already registered' is displayed",
-        "Error states are properly cleared when the user modifies the form and resubmits"
+        "All lead records are fetched from the backend using the existing getAllLeads query",
+        "Records are displayed in a table with columns for all Lead fields (full name, email, country, target job role, timestamp)",
+        "Timestamps are formatted in a human-readable format",
+        "Loading and error states are handled appropriately",
+        "Empty state is shown when no records exist"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Update the useCreateLead mutation to properly handle the LeadError.duplicateEmail response from the backend. Ensure the mutation correctly interprets the backend's duplicate detection result and propagates appropriate error states to the form component."
+          "path": "frontend/src/pages/LeadsPage.tsx",
+          "operation": "create",
+          "description": "Create a new page component that displays all leads in a table format. Use the useAllLeads hook from frontend/src/hooks/useQueries.ts to fetch data. Display columns for full name, email, country, target job role, and formatted timestamp. Handle loading state with a loading indicator, error state with an error message, and empty state when no records exist. Format timestamps from nanoseconds to human-readable format following the pattern in AdminPage.tsx."
         },
         {
-          "path": "frontend/src/components/EarlyAccessForm.tsx",
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Verify and update error handling logic to correctly display 'This email is already registered' when the backend returns a duplicate email error, show success messages for successful submissions, reset the form after success, and clear error states when the user modifies form fields before resubmitting."
+          "description": "Add a new route for the leads page at /leads path. Register the route in the router configuration to make the LeadsPage component accessible via navigation."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add a navigation link to the new leads page in both desktop and mobile menus. Include appropriate label text and routing configuration to enable users to navigate to the leads display page."
         }
       ]
     }
