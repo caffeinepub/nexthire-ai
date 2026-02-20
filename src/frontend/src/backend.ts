@@ -89,25 +89,95 @@ export class ExternalBlob {
         return this;
     }
 }
-export interface backendInterface {
-    saveEmail(email: string): Promise<void>;
+export interface Lead {
+    country: string;
+    createdAt: bigint;
+    fullName: string;
+    email: string;
+    targetJobRole: string;
 }
+export enum LeadError {
+    duplicateEmail = "duplicateEmail"
+}
+export interface backendInterface {
+    createLead(fullName: string, email: string, country: string, targetJobRole: string): Promise<LeadError | null>;
+    getAllLeads(): Promise<Array<Lead>>;
+    getLead(email: string): Promise<Lead | null>;
+    getLeadsCount(): Promise<bigint>;
+}
+import type { Lead as _Lead, LeadError as _LeadError } from "./declarations/backend.did.d.ts";
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
-    async saveEmail(arg0: string): Promise<void> {
+    async createLead(arg0: string, arg1: string, arg2: string, arg3: string): Promise<LeadError | null> {
         if (this.processError) {
             try {
-                const result = await this.actor.saveEmail(arg0);
+                const result = await this.actor.createLead(arg0, arg1, arg2, arg3);
+                return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.createLead(arg0, arg1, arg2, arg3);
+            return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+        }
+    }
+    async getAllLeads(): Promise<Array<Lead>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getAllLeads();
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.saveEmail(arg0);
+            const result = await this.actor.getAllLeads();
             return result;
         }
     }
+    async getLead(arg0: string): Promise<Lead | null> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getLead(arg0);
+                return from_candid_opt_n4(this._uploadFile, this._downloadFile, result);
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getLead(arg0);
+            return from_candid_opt_n4(this._uploadFile, this._downloadFile, result);
+        }
+    }
+    async getLeadsCount(): Promise<bigint> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getLeadsCount();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getLeadsCount();
+            return result;
+        }
+    }
+}
+function from_candid_LeadError_n2(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: _LeadError): LeadError {
+    return from_candid_variant_n3(_uploadFile, _downloadFile, value);
+}
+function from_candid_opt_n1(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: [] | [_LeadError]): LeadError | null {
+    return value.length === 0 ? null : from_candid_LeadError_n2(_uploadFile, _downloadFile, value[0]);
+}
+function from_candid_opt_n4(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: [] | [_Lead]): Lead | null {
+    return value.length === 0 ? null : value[0];
+}
+function from_candid_variant_n3(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
+    duplicateEmail: null;
+}): LeadError {
+    return "duplicateEmail" in value ? LeadError.duplicateEmail : value;
 }
 export interface CreateActorOptions {
     agent?: Agent;

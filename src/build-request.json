@@ -1,196 +1,60 @@
 {
   "kind": "build_request",
-  "title": "Build NextHire AI landing page",
-  "projectName": "NextHire AI",
-  "priority": "normal",
+  "title": "Fix email validation duplicate detection logic",
+  "priority": "high",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Create a hero section with a strong headline promoting NextHire AI as an AI-powered resume builder, a compelling subheadline, and a primary call-to-action button",
-      "target": "frontend",
+      "text": "Fix the duplicate email detection logic in the createLead function to properly check if an email already exists in the Leads collection before inserting a new record. The current implementation incorrectly returns 'This email is already registered' for every submission.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "Hero section with strong headline"
+          "Currently it incorrectly shows \"This email is already registered\" for every submission"
         ]
       },
       "acceptanceCriteria": [
-        "Hero section displays a prominent headline about NextHire AI",
-        "Section includes a descriptive subheadline",
-        "Primary CTA button is clearly visible"
+        "Before inserting a new Lead record, query the Leads Map to check if any existing record has the same email",
+        "Only return the error 'This email is already registered' if a matching email is actually found in the collection",
+        "If no existing email is found, successfully insert the new Lead record and return success",
+        "Email comparison must be case-insensitive (convert both emails to lowercase before comparison)",
+        "The database query correctly iterates through the Leads Map values to check for email matches"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Create a features section showcasing three key capabilities: AI resume builder, ATS checker, and job tracker, each with an icon, title, and description",
+      "text": "Verify the form submission flow correctly handles both duplicate and unique email submissions, displaying appropriate success or error messages to the user.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "Features section (AI resume builder, ATS checker, job tracker)"
+          "After fixing, test the submission flow"
         ]
       },
       "acceptanceCriteria": [
-        "Features section displays three distinct features",
-        "Each feature includes an icon, title, and description",
-        "Content specifically covers AI resume builder, ATS checker, and job tracker"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Create a 'How it works' section explaining the user journey in 3-4 steps with visual hierarchy",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "How it works section"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Section presents a clear step-by-step process",
-        "Each step is numbered and includes a description",
-        "Visual hierarchy guides users through the flow"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Create a pricing section with at least three pricing tiers (e.g., Free, Pro, Enterprise) including features list and CTA buttons for each tier",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Pricing section"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Pricing section displays multiple pricing tiers",
-        "Each tier shows price, features list, and a CTA button",
-        "Tiers are visually distinct with clear hierarchy"
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Create a testimonials section with at least three customer testimonials, each including a quote, customer name, and role/company",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Testimonials"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Testimonials section displays multiple customer quotes",
-        "Each testimonial includes quote text, customer name, and role/company",
-        "Testimonials are presented in a visually appealing layout"
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Create an FAQ section with at least 5-6 common questions and answers in an expandable/collapsible format",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "FAQ"
-        ]
-      },
-      "acceptanceCriteria": [
-        "FAQ section displays multiple questions",
-        "Questions are expandable/collapsible to show/hide answers",
-        "At least 5-6 relevant questions are included"
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Create a call-to-action section with email signup form that captures user email addresses and includes a submit button",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Call to action with email signup"
-        ]
-      },
-      "acceptanceCriteria": [
-        "CTA section includes an email input field",
-        "Section includes a submit button",
-        "Form validates email format before submission",
-        "Backend stores submitted email addresses"
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "text": "Apply a blue and white color theme throughout the landing page with clean, minimal, and professional styling that reflects a modern startup aesthetic",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Use blue and white color theme",
-          "Make it clean, minimal, and professional",
-          "Make it look like a startup website"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Primary color palette uses blue and white",
-        "Design is clean and minimal with appropriate whitespace",
-        "Overall aesthetic matches modern SaaS startup websites",
-        "Typography and spacing create a professional appearance"
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "text": "Render generated images as static assets in frontend/public/assets/generated for any visual elements created for the landing page",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Generated images are stored in frontend/public/assets/generated",
-        "Images are referenced correctly in the React components",
-        "Images load properly in the browser"
+        "When submitting a form with a new email, the success message is displayed and the form resets",
+        "When submitting a form with an existing email (case-insensitive match), the error message 'This email is already registered' is displayed",
+        "Error states are properly cleared when the user modifies the form and resubmits"
       ]
     }
   ],
   "constraints": [
-    "Use React with TypeScript for frontend implementation",
-    "Use Tailwind CSS for styling",
-    "Maintain blue and white color theme throughout",
-    "Follow single-actor Motoko architecture for backend"
+    "Maintain the existing Lead type structure and Map-based storage implementation",
+    "Do not modify the frontend form UI components beyond error handling logic",
+    "Preserve the existing useCreateLead mutation hook structure"
   ],
   "nonGoals": [
-    "User authentication system",
-    "Actual resume building functionality",
-    "Payment processing integration",
-    "Admin dashboard",
-    "Blog or content management system"
+    "Adding email format validation beyond duplicate checking",
+    "Implementing email verification or confirmation flows",
+    "Changing the database storage mechanism from Map to a different structure",
+    "Adding bulk email import or management features"
   ],
   "imageRequirements": {
-    "required": [
-      "Modern abstract hero background illustration with blue gradients and geometric shapes (hero-bg.dim_1920x1080.png)",
-      "Icon representing AI resume builder - robot with document (icon-resume-builder.dim_128x128.png)",
-      "Icon representing ATS checker - checkmark with document scan (icon-ats-checker.dim_128x128.png)",
-      "Icon representing job tracker - briefcase with list (icon-job-tracker.dim_128x128.png)",
-      "Professional headshot placeholder for testimonial 1 - business professional smiling (testimonial-1.dim_200x200.png)",
-      "Professional headshot placeholder for testimonial 2 - business professional smiling (testimonial-2.dim_200x200.png)",
-      "Professional headshot placeholder for testimonial 3 - business professional smiling (testimonial-3.dim_200x200.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

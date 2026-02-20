@@ -86,12 +86,26 @@
         @apply border-border;
     }
     
+    html,
     body {
         @apply bg-background text-foreground;
         font-feature-settings: "rlig" 1, "calt" 1;
+        margin: 0;
+        padding: 0;
+        width: 100%;
     }
     
     html {
         scroll-behavior: smooth;
+    }
+    
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    
+    #root {
+        width: 100%;
+        min-height: 100vh;
     }
 }

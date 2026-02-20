@@ -1,16 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Build a professional landing page for NextHire AI, an AI-powered resume builder platform, with a modern startup aesthetic using blue and white color theme.
+**Goal:** Fix the duplicate email detection logic in the lead submission system to correctly validate whether an email already exists before creating a new lead record.
 
 **Planned changes:**
-- Create hero section with headline, subheadline, and CTA button
-- Build features section showcasing AI resume builder, ATS checker, and job tracker with icons
-- Add "How it works" section with 3-4 step user journey
-- Implement pricing section with three tiers (Free, Pro, Enterprise)
-- Create testimonials section with customer quotes
-- Build expandable/collapsible FAQ section with 5-6 questions
-- Add email signup CTA section with form validation and backend storage
-- Apply clean, minimal blue and white styling throughout
+- Fix the backend createLead function to properly query the Leads Map and check for existing emails (case-insensitive) before insertion
+- Ensure the function only returns the "This email is already registered" error when a duplicate email is actually found
+- Verify frontend form correctly displays success messages for new emails and error messages for duplicate emails
 
-**User-visible outcome:** Users can view a complete NextHire AI landing page with all sections (hero, features, how it works, pricing, testimonials, FAQ, email signup), styled with a modern blue/white theme and professional design.
+**User-visible outcome:** Users can successfully submit the lead form with unique emails, and only receive the "This email is already registered" error when submitting an email that actually exists in the system.

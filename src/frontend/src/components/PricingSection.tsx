@@ -6,79 +6,55 @@ export default function PricingSection() {
       name: 'Free',
       price: '$0',
       period: 'forever',
-      description: 'Perfect for getting started',
       features: [
         '1 Resume',
-        'Basic ATS Checker',
-        'Standard Templates',
-        'PDF Export',
-        'Email Support',
+        'Standard template',
+        'PDF download',
       ],
       cta: 'Get Started',
       highlighted: false,
     },
     {
       name: 'Pro',
-      price: '$19',
+      price: '$9',
       period: 'per month',
-      description: 'For serious job seekers',
       features: [
-        'Unlimited Resumes',
-        'Advanced ATS Checker',
-        'Premium Templates',
-        'Job Tracker (50 applications)',
-        'AI-Powered Suggestions',
-        'Priority Support',
-        'Cover Letter Generator',
+        'Unlimited resumes',
+        'ATS score checker',
+        'AI cover letter generator',
+        'Multiple templates',
       ],
       cta: 'Start Free Trial',
       highlighted: true,
     },
-    {
-      name: 'Enterprise',
-      price: 'Custom',
-      period: 'contact us',
-      description: 'For teams and organizations',
-      features: [
-        'Everything in Pro',
-        'Unlimited Job Tracking',
-        'Team Collaboration',
-        'Custom Branding',
-        'API Access',
-        'Dedicated Account Manager',
-        'Custom Integrations',
-      ],
-      cta: 'Contact Sales',
-      highlighted: false,
-    },
   ];
 
   const scrollToSignup = () => {
-    const element = document.getElementById('signup');
+    const element = document.getElementById('final-cta');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Simple, <span className="text-primary">Transparent Pricing</span>
+            Simple, Transparent Pricing
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Choose the plan that's right for you. All plans include a 14-day money-back guarantee.
+            Choose the plan that's right for you
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`rounded-2xl p-8 border ${
+              className={`rounded-lg p-8 border ${
                 plan.highlighted
-                  ? 'border-primary bg-card shadow-xl scale-105 relative'
+                  ? 'border-primary bg-card shadow-xl relative'
                   : 'border-border bg-card'
               }`}
             >
@@ -88,9 +64,8 @@ export default function PricingSection() {
                 </div>
               )}
               <div className="mb-6">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
-                <div className="flex items-baseline gap-2">
+                <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
+                <div className="flex items-baseline gap-2 mb-6">
                   <span className="text-5xl font-bold">{plan.price}</span>
                   <span className="text-muted-foreground">/ {plan.period}</span>
                 </div>

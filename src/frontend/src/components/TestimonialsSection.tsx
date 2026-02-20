@@ -4,39 +4,39 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       image: '/assets/generated/testimonial-1.dim_200x200.png',
-      name: 'Sarah Johnson',
-      role: 'Software Engineer at Google',
+      name: 'Priya Sharma',
+      role: 'Computer Science Student, India',
       quote:
-        'NextHire AI completely transformed my resume. I went from getting zero responses to landing 5 interviews in just two weeks. The ATS optimization feature is a game-changer!',
+        'NextHire AI helped me land my first internship at a Fortune 500 company. The ATS optimization made all the difference!',
       rating: 5,
     },
     {
       image: '/assets/generated/testimonial-2.dim_200x200.png',
-      name: 'Michael Chen',
-      role: 'Product Manager at Microsoft',
+      name: 'James Wilson',
+      role: 'Business Graduate, UK',
       quote:
-        'The job tracker feature helped me stay organized during my job search. I managed 30+ applications effortlessly and landed my dream role. Highly recommend!',
+        'I went from zero responses to three interview invitations in one week. The AI suggestions were incredibly helpful.',
       rating: 5,
     },
     {
       image: '/assets/generated/testimonial-3.dim_200x200.png',
-      name: 'Emily Rodriguez',
-      role: 'Marketing Director at Salesforce',
+      name: 'Maria Garcia',
+      role: 'Engineering Student, USA',
       quote:
-        'As someone who struggled with resume writing, NextHire AI was a lifesaver. The AI suggestions were spot-on, and I felt confident submitting my applications.',
+        'As an international student, I needed a resume that worked globally. NextHire AI delivered exactly that.',
       rating: 5,
     },
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Loved by <span className="text-primary">Job Seekers</span> Everywhere
+            Loved by Students Worldwide
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of professionals who have transformed their job search with NextHire AI
+          <p className="text-sm text-muted-foreground">
+            Trusted by students across USA, UK, India, Canada, and Australia.
           </p>
         </div>
 
@@ -44,14 +44,14 @@ export default function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card rounded-2xl p-8 border border-border hover:border-primary/50 transition-all hover:shadow-lg"
+              className="bg-card rounded-lg p-8 border border-border"
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} size={20} className="fill-primary text-primary" />
+                  <Star key={i} size={18} className="fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-muted-foreground mb-6 leading-relaxed italic">
+              <p className="text-muted-foreground mb-6 leading-relaxed">
                 "{testimonial.quote}"
               </p>
               <div className="flex items-center gap-4">

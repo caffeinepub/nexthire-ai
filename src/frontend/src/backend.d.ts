@@ -7,6 +7,19 @@ export interface None {
     __kind__: "None";
 }
 export type Option<T> = Some<T> | None;
+export interface Lead {
+    country: string;
+    createdAt: bigint;
+    fullName: string;
+    email: string;
+    targetJobRole: string;
+}
+export enum LeadError {
+    duplicateEmail = "duplicateEmail"
+}
 export interface backendInterface {
-    saveEmail(email: string): Promise<void>;
+    createLead(fullName: string, email: string, country: string, targetJobRole: string): Promise<LeadError | null>;
+    getAllLeads(): Promise<Array<Lead>>;
+    getLead(email: string): Promise<Lead | null>;
+    getLeadsCount(): Promise<bigint>;
 }

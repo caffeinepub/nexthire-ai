@@ -1,15 +1,33 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from '@tanstack/react-router';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false);
+    // If not on home page, navigate there first
+    if (window.location.pathname !== '/') {
+      navigate({ to: '/' }).then(() => {
+        setTimeout(() => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      });
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+    setMobileMenuOpen(false);
+  };
+
+  const handleLogoClick = () => {
+    navigate({ to: '/' });
   };
 
   return (
@@ -17,7 +35,9 @@ export default function Header() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <span className="text-2xl font-bold text-primary">NextHire AI</span>
+            <button onClick={handleLogoClick} className="text-2xl font-bold text-primary hover:opacity-90 transition-opacity">
+              NextHire AI
+            </button>
           </div>
 
           {/* Desktop Navigation */}

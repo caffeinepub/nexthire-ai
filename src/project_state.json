@@ -1,85 +1,18 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Modern SaaS landing page for NextHire AI (AI Resume Builder) with hero, features, how it works, pricing, testimonials, FAQ, and email signup sections. Blue and white color theme with clean, minimal, professional startup aesthetic.",
-  "architectural_notes": [
-    "Blue and white color theme throughout",
-    "Clean, minimal, professional design aesthetic",
-    "Modern SaaS startup landing page structure"
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [
+    "Email validation incorrectly shows 'This email is already registered' for every submission"
   ],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Modern abstract hero background illustration with blue gradients and geometric shapes (hero-bg.dim_1920x1080.png)\n- Icon representing AI resume builder - robot with document (icon-resume-builder.dim_128x128.png)\n- Icon representing ATS checker - checkmark with document scan (icon-ats-checker.dim_128x128.png)\n- Icon representing job tracker - briefcase with list (icon-job-tracker.dim_128x128.png)\n- Professional headshot placeholder for testimonial 1 - business professional smiling (testimonial-1.dim_200x200.png)\n- Professional headshot placeholder for testimonial 2 - business professional smiling (testimonial-2.dim_200x200.png)\n- Professional headshot placeholder for testimonial 3 - business professional smiling (testimonial-3.dim_200x200.png)",
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-create-a-hero-section-with-a-strong-headline-promoting-nexthire-ai-as-an-ai-powered-resume-builder-a-compelling-subheadline-and-a-primary-call-to-action-button",
-      "title": "Create a hero section with a strong headline promoting NextHire AI as an AI-powered resume builder, a compelling subheadline, and a primary call-to-action button",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-features-section-showcasing-three-key-capabilities-ai-resume-builder-ats-checker-and-job-tracker-each-with-an-icon-title-and-description",
-      "title": "Create a features section showcasing three key capabilities: AI resume builder, ATS checker, and job tracker, each with an icon, title, and description",
+      "id": "feature-verify-the-form-submission-flow-correctly-handles-both-duplicate-and-unique-email-submissions-displaying-appropriate-success-or-error-messages-to-the-user",
+      "title": "Verify the form submission flow correctly handles both duplicate and unique email submissions, displaying appropriate success or error messages to the user.",
       "reqIds": [
         "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-how-it-works-section-explaining-the-user-journey-in-3-4-steps-with-visual-hierarchy",
-      "title": "Create a 'How it works' section explaining the user journey in 3-4 steps with visual hierarchy",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-pricing-section-with-at-least-three-pricing-tiers-e-g-free-pro-enterprise-including-features-list-and-cta-buttons-for-each-tier",
-      "title": "Create a pricing section with at least three pricing tiers (e.g., Free, Pro, Enterprise) including features list and CTA buttons for each tier",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-testimonials-section-with-at-least-three-customer-testimonials-each-including-a-quote-customer-name-and-role-company",
-      "title": "Create a testimonials section with at least three customer testimonials, each including a quote, customer name, and role/company",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-an-faq-section-with-at-least-5-6-common-questions-and-answers-in-an-expandable-collapsible-format",
-      "title": "Create an FAQ section with at least 5-6 common questions and answers in an expandable/collapsible format",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-call-to-action-section-with-email-signup-form-that-captures-user-email-addresses-and-includes-a-submit-button",
-      "title": "Create a call-to-action section with email signup form that captures user email addresses and includes a submit button",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-apply-a-blue-and-white-color-theme-throughout-the-landing-page-with-clean-minimal-and-professional-styling-that-reflects-a-modern-startup-aesthetic",
-      "title": "Apply a blue and white color theme throughout the landing page with clean, minimal, and professional styling that reflects a modern startup aesthetic",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-render-generated-images-as-static-assets-in-frontend-public-assets-generated-for-any-visual-elements-created-for-the-landing-page",
-      "title": "Render generated images as static assets in frontend/public/assets/generated for any visual elements created for the landing page",
-      "reqIds": [
-        "REQ-9"
       ],
       "version": 1
     }
@@ -87,49 +20,14 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Hero section with strong headline",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Features section showcasing AI resume builder, ATS checker, and job tracker",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "How it works section",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Pricing section",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Testimonials section",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "FAQ section",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-7",
-      "summary": "Call to action section with email signup",
-      "reqIds": [],
+      "summary": "Fix the duplicate email detection logic in the createLead function to properly check if an email already exists in the Leads collection before inserting a new record. The current implementation incorrectly returns 'This email is already registered' for every submission.",
+      "reqIds": [
+        "REQ-1"
+      ],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "NextHire AI",
+  "projectName": "Fix email validation duplicate detection logic",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

@@ -1,201 +1,26 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "NextHire AI Landing Page",
+  "title": "Fix email validation duplicate detection logic - Frontend",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Create hero section with headline, subheadline, and CTA promoting NextHire AI",
-      "acceptanceCriteria": [
-        "Hero section displays a prominent headline about NextHire AI",
-        "Section includes a descriptive subheadline",
-        "Primary CTA button is clearly visible"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/HeroSection.tsx",
-          "operation": "create",
-          "description": "Create hero section component with headline 'Transform Your Job Search with AI-Powered Resumes', subheadline describing NextHire AI benefits, primary CTA button, and hero background image using frontend/public/assets/generated/hero-bg.dim_1920x1080.png as background"
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import and render HeroSection component at the top of the landing page"
-        }
-      ]
-    },
-    {
       "id": "REQ-2",
-      "summary": "Create features section showcasing AI resume builder, ATS checker, and job tracker with icons",
+      "summary": "Verify the form submission flow correctly handles both duplicate and unique email submissions, displaying appropriate success or error messages to the user",
       "acceptanceCriteria": [
-        "Features section displays three distinct features",
-        "Each feature includes an icon, title, and description",
-        "Content specifically covers AI resume builder, ATS checker, and job tracker"
+        "When submitting a form with a new email, the success message is displayed and the form resets",
+        "When submitting a form with an existing email (case-insensitive match), the error message 'This email is already registered' is displayed",
+        "Error states are properly cleared when the user modifies the form and resubmits"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/FeaturesSection.tsx",
-          "operation": "create",
-          "description": "Create features section component displaying three features: AI Resume Builder (using frontend/public/assets/generated/icon-resume-builder.dim_128x128.png), ATS Checker (using frontend/public/assets/generated/icon-ats-checker.dim_128x128.png), and Job Tracker (using frontend/public/assets/generated/icon-job-tracker.dim_128x128.png), each with icon, title, and description text"
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Update the useCreateLead mutation to properly handle the LeadError.duplicateEmail response from the backend. Ensure the mutation correctly interprets the backend's duplicate detection result and propagates appropriate error states to the form component."
         },
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/components/EarlyAccessForm.tsx",
           "operation": "modify",
-          "description": "Import and render FeaturesSection component below HeroSection"
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Create 'How it works' section with 3-4 step user journey",
-      "acceptanceCriteria": [
-        "Section presents a clear step-by-step process",
-        "Each step is numbered and includes a description",
-        "Visual hierarchy guides users through the flow"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/HowItWorksSection.tsx",
-          "operation": "create",
-          "description": "Create how it works section component with numbered steps (1. Upload Resume, 2. AI Analysis, 3. ATS Optimization, 4. Track Applications) using visual hierarchy with step numbers and descriptions"
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import and render HowItWorksSection component below FeaturesSection"
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Create pricing section with Free, Pro, and Enterprise tiers including features and CTAs",
-      "acceptanceCriteria": [
-        "Pricing section displays multiple pricing tiers",
-        "Each tier shows price, features list, and a CTA button",
-        "Tiers are visually distinct with clear hierarchy"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/PricingSection.tsx",
-          "operation": "create",
-          "description": "Create pricing section component with three tiers (Free, Pro, Enterprise), each displaying price, features list, and CTA button with visual distinction between tiers"
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import and render PricingSection component below HowItWorksSection"
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Create testimonials section with customer quotes, names, and roles",
-      "acceptanceCriteria": [
-        "Testimonials section displays multiple customer quotes",
-        "Each testimonial includes quote text, customer name, and role/company",
-        "Testimonials are presented in a visually appealing layout"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/TestimonialsSection.tsx",
-          "operation": "create",
-          "description": "Create testimonials section component displaying three testimonials with customer quotes, names, and roles/companies, using frontend/public/assets/generated/testimonial-1.dim_200x200.png, frontend/public/assets/generated/testimonial-2.dim_200x200.png, and frontend/public/assets/generated/testimonial-3.dim_200x200.png as profile images"
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import and render TestimonialsSection component below PricingSection"
-        }
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "summary": "Create FAQ section with expandable/collapsible questions and answers",
-      "acceptanceCriteria": [
-        "FAQ section displays multiple questions",
-        "Questions are expandable/collapsible to show/hide answers",
-        "At least 5-6 relevant questions are included"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/FAQSection.tsx",
-          "operation": "create",
-          "description": "Create FAQ section component with 5-6 questions about NextHire AI (e.g., How does AI resume building work?, What is ATS optimization?, Pricing questions, Data security, etc.) in expandable/collapsible accordion format using state management for toggle behavior"
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import and render FAQSection component below TestimonialsSection"
-        }
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "summary": "Create email signup CTA section with form that submits to backend",
-      "acceptanceCriteria": [
-        "CTA section includes an email input field",
-        "Section includes a submit button",
-        "Form validates email format before submission",
-        "Backend stores submitted email addresses"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/EmailSignupSection.tsx",
-          "operation": "create",
-          "description": "Create email signup CTA section component with email input field, submit button, email validation, form state management, and integration with backend.saveEmail() method to store email addresses with success/error message display"
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import and render EmailSignupSection component below FAQSection"
-        }
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "summary": "Apply blue and white color theme with clean, minimal, professional startup aesthetic",
-      "acceptanceCriteria": [
-        "Primary color palette uses blue and white",
-        "Design is clean and minimal with appropriate whitespace",
-        "Overall aesthetic matches modern SaaS startup websites",
-        "Typography and spacing create a professional appearance"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Update global styles with blue and white color theme using CSS custom properties for primary blue shades, white backgrounds, clean typography, and professional spacing that creates a modern startup aesthetic"
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Configure Tailwind theme with blue color palette (e.g., primary blue #3B82F6, accent blues), white backgrounds, professional font families, and spacing scale that supports clean minimal design"
-        }
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "summary": "Render generated images as static assets in the landing page components",
-      "acceptanceCriteria": [
-        "Generated images are stored in frontend/public/assets/generated",
-        "Images are referenced correctly in the React components",
-        "Images load properly in the browser"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Verify hero background image frontend/public/assets/generated/hero-bg.dim_1920x1080.png is correctly referenced and rendered"
-        },
-        {
-          "path": "frontend/src/components/FeaturesSection.tsx",
-          "operation": "modify",
-          "description": "Verify feature icons frontend/public/assets/generated/icon-resume-builder.dim_128x128.png, frontend/public/assets/generated/icon-ats-checker.dim_128x128.png, and frontend/public/assets/generated/icon-job-tracker.dim_128x128.png are correctly referenced and rendered"
-        },
-        {
-          "path": "frontend/src/components/TestimonialsSection.tsx",
-          "operation": "modify",
-          "description": "Verify testimonial images frontend/public/assets/generated/testimonial-1.dim_200x200.png, frontend/public/assets/generated/testimonial-2.dim_200x200.png, and frontend/public/assets/generated/testimonial-3.dim_200x200.png are correctly referenced and rendered"
+          "description": "Verify and update error handling logic to correctly display 'This email is already registered' when the backend returns a duplicate email error, show success messages for successful submissions, reset the form after success, and clear error states when the user modifies form fields before resubmitting."
         }
       ]
     }

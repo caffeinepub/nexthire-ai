@@ -8,14 +8,48 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
+export const LeadError = IDL.Variant({ 'duplicateEmail' : IDL.Null });
+export const Lead = IDL.Record({
+  'country' : IDL.Text,
+  'createdAt' : IDL.Int,
+  'fullName' : IDL.Text,
+  'email' : IDL.Text,
+  'targetJobRole' : IDL.Text,
+});
+
 export const idlService = IDL.Service({
-  'saveEmail' : IDL.Func([IDL.Text], [], []),
+  'createLead' : IDL.Func(
+      [IDL.Text, IDL.Text, IDL.Text, IDL.Text],
+      [IDL.Opt(LeadError)],
+      [],
+    ),
+  'getAllLeads' : IDL.Func([], [IDL.Vec(Lead)], ['query']),
+  'getLead' : IDL.Func([IDL.Text], [IDL.Opt(Lead)], ['query']),
+  'getLeadsCount' : IDL.Func([], [IDL.Nat], ['query']),
 });
 
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
-  return IDL.Service({ 'saveEmail' : IDL.Func([IDL.Text], [], []) });
+  const LeadError = IDL.Variant({ 'duplicateEmail' : IDL.Null });
+  const Lead = IDL.Record({
+    'country' : IDL.Text,
+    'createdAt' : IDL.Int,
+    'fullName' : IDL.Text,
+    'email' : IDL.Text,
+    'targetJobRole' : IDL.Text,
+  });
+  
+  return IDL.Service({
+    'createLead' : IDL.Func(
+        [IDL.Text, IDL.Text, IDL.Text, IDL.Text],
+        [IDL.Opt(LeadError)],
+        [],
+      ),
+    'getAllLeads' : IDL.Func([], [IDL.Vec(Lead)], ['query']),
+    'getLead' : IDL.Func([IDL.Text], [IDL.Opt(Lead)], ['query']),
+    'getLeadsCount' : IDL.Func([], [IDL.Nat], ['query']),
+  });
 };
 
 export const init = ({ IDL }) => { return []; };
